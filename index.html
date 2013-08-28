@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+  
+    <title>Sticky Footer Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">'
+    
+    <!-- Bootstrap theme -->
+    <link href="bootstrap-3.0.0/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="bootstrap-3.0.0/assets/js/html5shiv.js"></script>
+      <script src="bootstrap-3.0.0/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1><strong>Salisbury University Exercise Routes</strong></h1>
+        </div>
+        <ul class="nav nav-tabs">
+ 					<li class="active"><a href="#walkrun">Walking/Running Routes</a></li>
+  				<li><a href="#bike">Biking Routes</a></li>
+				</ul>
+				<div class="tab-content">
+    			<div id="walkrun" class="tab-pane active">
+    				<br>
+    				<div class="btn-group-vertical">
+							<label class="btn btn-primary">
+    						<input type="checkbox">Staff Loop - 3 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Bridge Out and Back - 3 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Covered Bridge Loop - 4.5 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Holly Center Loop - 3.5 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Riverside Fruitland Loop - 5 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Hospital Loop - 3 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Pine Bluff Loop - 2 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Woodlawn Loop - 2.5 Miles
+    					</label>
+							<label class="btn btn-primary">
+    						<input type="checkbox">Dykes Road Loop - 4.5 Miles
+    					</label>
+						</div>
+    			</div>
+    			<div id="bike" class="tab-pane">
+    				<h4>Pane 2 Content</h4>
+     				<p> and so on ...</p>
+    			</div>
+      	</div>
+    	</div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Created by <a href='gnappworks.salisbury.edu'>GNAppWorks</a> at <a href='www.salisbury.edu'>Salisbury University</a></p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="bootstrap-3.0.0/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="bootstrap-3.0.0/js/button.js"></script>
+    
+    <!--Makes the tabs change when clicked-->
+    <script type="text/javascript">
+    	$('.btn-group-vertical').button()
+    	
+			$('.nav-tabs a').click(function (e) {
+    		$(this).tab('show');
+			});
+		</script>
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
