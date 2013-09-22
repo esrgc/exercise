@@ -3,8 +3,11 @@ var m;
 $("#mapPage").on("pageshow",function(event, ui) {
 	if(typeof(m)=="undefined"){
 		m=new Map();
+		m.init();
 	}
-	m.init();
+	else{
+		m.createModelArray();
+	}
 });
 
 function Map(){
@@ -36,6 +39,25 @@ function Map(){
 			maxZoom: 18,
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
 		}).addTo(map);
+
+		function onLocationFound(e) {
+    		var radius = e.accuracy / 2;
+
+		    L.marker(e.latlng).addTo(map);
+
+		    L.circle(e.latlng, radius).addTo(map);
+		}
+
+		function onLocationError(e) {
+		    alert(e.message);
+		}
+
+		map.on('locationfound', onLocationFound);
+		map.on('locationerror', onLocationError);
+
+
+
+
 		self.layerGroup=L.layerGroup();
 		
 		self.createModelArray();
