@@ -1,3 +1,10 @@
+/*********************************************
+	Author  - Joshua Souders
+	Company	- ESRGC/GNAppWorks
+	Date	- 10/27/13
+	Summary	- Initializes the checkboxes
+*********************************************/
+
 initializeSelector();
 
 function initializeSelector(){
@@ -11,6 +18,7 @@ function initializeSelector(){
 		$(id).show();
 	}
 	
+	//takes JSON as input, loops through and adds the checkboxes corresponding to trail names
 	function addCheckboxes(elem, items){
 		var html="<fieldset data-role='controlgroup'>";
 		_.each(items.features, function(features){
@@ -21,7 +29,7 @@ function initializeSelector(){
 		$('#'+elem).trigger("create");
 	}
 	
-	
+	//gets the JSON and calls addCheckboxes with the information. references JSONFunctions.js
 	var walkrun=getJSON("walkrun").done(function (items) {
 		addCheckboxes("walkrun-trails", items);
 	});

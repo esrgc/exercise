@@ -1,6 +1,16 @@
+/*********************************************
+	Author  - Joshua Souders
+	Company	- ESRGC/GNAppWorks
+	Date	- 10/27/13
+	Summary	- Initializes and updates the map
+*********************************************/
+
+
+//map object
 var m;
 
 $("#mapPage").on("pageshow",function(event, ui) {
+	//creates map if not initilized, refreshes the map if it is
 	if(typeof(m)=="undefined"){
 		m=new Map();
 		m.init();
@@ -21,6 +31,7 @@ function Map(){
 	this.colorIndex;
 	
 	this.init=function(){
+		//if init hasn't been run we initialize fully, if it has we just refresh
 		if(self.loaded==false){
 			self.colorIndex=-1;
 			self.initializeMap();
@@ -40,6 +51,7 @@ function Map(){
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
 		}).addTo(map);
 
+		//this is a plugin, not native Leaflet
 		map.addControl( new L.Control.Gps({
 			style: 
 			{	
@@ -51,12 +63,13 @@ function Map(){
 			} 
 		}));
 
-
+		//creates a layer group so we can delete all trails at once if needed
 		self.layerGroup=L.layerGroup();
 		
 		self.createModelArray();
 	}
-	
+
+	//calls a function to get the JSON files with jQuery, then tells the map to call the funtion to add the right trails
 	this.createModelArray=function(){
 		var walkrun=getJSON("walkrun").done(function (items) {
 			self.addFeatures(items, "walkrun");
@@ -67,6 +80,7 @@ function Map(){
 		});
 	}
 	
+	//adds trails to the layergroup and then the map given JSON input
 	this.addFeatures=function(model, modelName){
 		_.each(model.features, function(features){
 			var idVal=features.id;
@@ -80,15 +94,17 @@ function Map(){
 		});
 	}
 	
+	//creates an array of acceptable colors for the trail lines
 	this.initializeColors=function(){
 		self.colors = new Array("#00ffff","#000000","#0000ff","#a52a2a","#00008b","#008b8b","#006400","#8b008b","#556b2f","#9932cc","#8b0000","#e9967a","#9400d3","#ff00ff","#ffd700","#008000","#4b0082","#00ff00","#ff00ff","#800000","#000080","#808000","#ffc0cb","#ff0000","#ffff00");
 	}
 	
+	//Loops through and picks an acceptable color for the trail
 	this.getColor=function(){
 		self.colorIndex++;
 		if(self.colorIndex>=self.colors.length){
 			self.colorIndex=0;
 		}
-    return self.colors[self.colorIndex];
+    	return self.colors[self.colorIndex];
 	}
 }
